@@ -38,7 +38,6 @@ const EditUserModal = ({ user, onClose, onSave }: EditUserModalProps) => {
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md sm:max-w-lg p-6 mx-4 sm:mx-6">
         <h2 className="text-xl font-bold mb-4">Edit User</h2>
         <form>
-          {/* Name Field */}
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2">Name</label>
             <input
@@ -55,8 +54,6 @@ const EditUserModal = ({ user, onClose, onSave }: EditUserModalProps) => {
               <p className="text-red-500 text-sm mt-1">{errors.name}</p>
             )}
           </div>
-
-          {/* Email Field */}
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2">Email</label>
             <input
@@ -73,8 +70,6 @@ const EditUserModal = ({ user, onClose, onSave }: EditUserModalProps) => {
               <p className="text-red-500 text-sm mt-1">{errors.email}</p>
             )}
           </div>
-
-          {/* Location Field */}
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2">
               Location
@@ -94,8 +89,6 @@ const EditUserModal = ({ user, onClose, onSave }: EditUserModalProps) => {
             )}
           </div>
         </form>
-
-        {/* Buttons */}
         <div className="flex justify-end gap-4 mt-6">
           <button
             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"

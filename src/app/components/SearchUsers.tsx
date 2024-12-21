@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
 
-const SearchUsers = () => {
+interface SearchUsersProps {
+  setSearchTerm: (term: string) => void;
+}
+
+const SearchUsers = ({ setSearchTerm }: SearchUsersProps) => {
   return (
     <div
       className="w-full flex justify-center transition-all duration-500 ease-in-out transform"
@@ -13,6 +17,7 @@ const SearchUsers = () => {
           placeholder="Search by name, email, ID, or location"
           className="w-full pl-10 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none shadow-sm 
           hover:shadow-md transition-shadow duration-300"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <div className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500">
           <svg

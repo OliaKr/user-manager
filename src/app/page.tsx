@@ -54,15 +54,20 @@ export default function Home() {
     setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
   };
 
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto px-4 ">
-      {/* Background Circle */}
       <div
         className="circlePosition w-[300px] sm:w-[590px] h-[200px] sm:h-[400px] bg-[#ec5ff9] rounded-[100%] absolute 
         z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] blur-[100px] sm:blur-[150px]"
       ></div>
-
-      {/* Header */}
       <div className="center m-auto w-[90%] sm:w-[70%]">
         <div className="centerText">
           <h2 className="text-[36px] sm:text-[50px] font-bold text-[#f323db] text-center mt-8 sm:mt-[30px] mb-4 sm:mb-[0.35rem]">
@@ -73,13 +78,10 @@ export default function Home() {
           </p>
         </div>
       </div>
-
-      {/* Search and Add User Button */}
       <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 ">
         <div className="w-full justify-center sm:w-1/4">
-          <SearchUsers />
+          <SearchUsers setSearchTerm={setSearchTerm} />
         </div>
-        {/* <AddUserButton /> */}
         <button
           type="button"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -91,8 +93,7 @@ export default function Home() {
       <UserList
         isError={isError}
         isLoading={isLoading}
-        users={users}
-        searchTerm={searchTerm}
+        users={filteredUsers}
         onSave={handleSaveUser}
         onDelete={handleDeleteUser}
       />

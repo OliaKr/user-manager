@@ -1,9 +1,7 @@
-import React from "react";
 import { User } from "../types";
 import UserCard from "./UserCard";
 
 interface UsersListProps {
-  searchTerm: string;
   isLoading: boolean;
   isError: boolean;
   users: User[];
@@ -11,10 +9,39 @@ interface UsersListProps {
   onDelete: (userId: string) => void;
 }
 
-const UserList = (props: UsersListProps) => {
-  const { searchTerm, users, isError, isLoading, onSave, onDelete } = props;
+const UserList = ({
+  isLoading,
+  isError,
+  users,
+  onSave,
+  onDelete,
+}: UsersListProps) => {
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <p>Error loading users. Please try again.</p>
+      </div>
+    );
+  }
+
+  if (users.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <p>No users found matching your search.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="blurtext bg-[white] relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4  ">
+    <div className="blurtext bg-[white] relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
       {users.map((user) => (
         <UserCard
           key={user.id}
