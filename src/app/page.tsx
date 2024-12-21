@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SearchUsers from "./components/SearchUsers";
-import AddUserButton from "./components/AddUserButton";
 import { User } from "./types";
 import { ApiResponse } from "./types";
 import UserList from "./components/UserList";
+import AddNewUserModal from "./components/AddNewUserModal";
 
 const fetchUsers = async (): Promise<User[]> => {
   const response = await fetch("https://randomuser.me/api/?results=10");
@@ -22,6 +22,8 @@ const fetchUsers = async (): Promise<User[]> => {
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [users, setUsers] = useState<User[]>([]);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const {
     data: fetchedUsers = [],
     isLoading,
@@ -36,6 +38,22 @@ export default function Home() {
       setUsers(fetchedUsers);
     }
   }, [fetchedUsers, users]);
+
+  const handleSaveUser = (updatedUser: User) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+    );
+  };
+
+  const handleAddUser = (newUser: User) => {
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+    setIsAddModalOpen(false);
+  };
+
+  const handleDeleteUser = (userId: string) => {
+    setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+  };
+
   return (
     <div className="container mx-auto px-4 ">
       {/* Background Circle */}
@@ -61,14 +79,29 @@ export default function Home() {
         <div className="w-full justify-center sm:w-1/4">
           <SearchUsers />
         </div>
-        <AddUserButton />
+        {/* <AddUserButton /> */}
+        <button
+          type="button"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          onClick={() => setIsAddModalOpen(true)}
+        >
+          Add User
+        </button>
       </div>
       <UserList
         isError={isError}
         isLoading={isLoading}
         users={users}
         searchTerm={searchTerm}
+        onSave={handleSaveUser}
+        onDelete={handleDeleteUser}
       />
+      {isAddModalOpen && (
+        <AddNewUserModal
+          onClose={() => setIsAddModalOpen(false)}
+          onSave={handleAddUser}
+        />
+      )}
     </div>
   );
 }
