@@ -1,8 +1,41 @@
 "use client";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import SearchUsers from "./components/SearchUsers";
 import AddUserButton from "./components/AddUserButton";
+import { User } from "./types";
+import { ApiResponse } from "./types";
+import UserList from "./components/UserList";
+
+const fetchUsers = async (): Promise<User[]> => {
+  const response = await fetch("https://randomuser.me/api/?results=10");
+  const data: ApiResponse = await response.json();
+  return data.results.map((user) => ({
+    id: user.login.uuid,
+    name: `${user.name.title} ${user.name.first} ${user.name.last}`,
+    email: user.email,
+    image: user.picture.medium,
+    location: `${user.location.street.number} ${user.location.street.name}, ${user.location.city}, ${user.location.country}`,
+  }));
+};
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [users, setUsers] = useState<User[]>([]);
+  const {
+    data: fetchedUsers = [],
+    isLoading,
+    isError,
+  } = useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: fetchUsers,
+  });
+
+  useEffect(() => {
+    if (fetchedUsers?.length && users.length === 0) {
+      setUsers(fetchedUsers);
+    }
+  }, [fetchedUsers, users]);
   return (
     <div className="container mx-auto px-4 ">
       {/* Background Circle */}
@@ -30,9 +63,12 @@ export default function Home() {
         </div>
         <AddUserButton />
       </div>
-      <div className="blurtext bg-[white] relative z-10 p-[20px] ">
-        <p>Olia</p>
-      </div>
+      <UserList
+        isError={isError}
+        isLoading={isLoading}
+        users={users}
+        searchTerm={searchTerm}
+      />
     </div>
   );
 }
