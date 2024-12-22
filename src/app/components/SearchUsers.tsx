@@ -6,7 +6,7 @@ const SearchUsers = ({ setSearchTerm }: SearchUsersProps) => {
       className="w-full flex justify-center transition-all duration-500 ease-in-out transform"
       style={{ animation: "fadeIn 0.5s ease-in-out" }}
     >
-      <div className="relative w-full  sm:max-w-sm animate-fade-in">
+      <div className="relative w-full sm:max-w-xl animate-fade-in">
         <input
           type="text"
           placeholder="Search by name, email, ID, or location"

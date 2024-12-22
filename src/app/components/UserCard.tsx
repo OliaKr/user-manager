@@ -19,6 +19,8 @@ const UserCard = (props: UserCardProps) => {
           src={user.image || "/default-image.png"}
           alt={user.name || "User image"}
           className="rounded-full w-24 h-24 mb-4"
+          width={300}
+          height={300}
         />
         <div className="text-center mb-4 flex-grow">
           <h3 className="text-lg font-bold mb-2 ">{user.name}</h3>
