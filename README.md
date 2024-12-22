@@ -1,4 +1,4 @@
-This is home assignment built using [Next.js](https://nextjs.org/). The project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a home assignment built using [Next.js](https://nextjs.org/). The project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Key Features
 
@@ -12,10 +12,7 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+![alt text](https://github.com/OliaKr/user-manager/blob/main/public/screen.JPG)
+![alt text](https://github.com/OliaKr/user-manager/blob/main/public/screen1.JPG)

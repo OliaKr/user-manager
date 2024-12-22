@@ -1,13 +1,6 @@
 import { User } from "../types";
+import { UsersListProps } from "../types";
 import UserCard from "./UserCard";
-
-interface UsersListProps {
-  isLoading: boolean;
-  isError: boolean;
-  users: User[];
-  onSave: (updatedUser: User) => void;
-  onDelete: (userId: string) => void;
-}
 
 const UserList = ({
   isLoading,

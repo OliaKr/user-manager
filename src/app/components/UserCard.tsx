@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { User } from "../types";
+import { UserCardProps } from "../types";
 import EditUserModal from "./EditUserModal";
 import DeleteUserModal from "./DeleteUserModal";
-interface UserCardProps {
-  user: User;
-  onSave: (updatedUser: User) => void;
-  onDelete: (userId: string) => void;
-}
 
 const UserCard = (props: UserCardProps) => {
   const { user, onSave, onDelete } = props;

@@ -1,8 +1,5 @@
 "use client";
-interface SearchUsersProps {
-  setSearchTerm: (term: string) => void;
-}
-
+import { SearchUsersProps } from "../types";
 const SearchUsers = ({ setSearchTerm }: SearchUsersProps) => {
   return (
     <div

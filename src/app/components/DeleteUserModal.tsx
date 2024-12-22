@@ -1,12 +1,6 @@
 "use client";
 import ReactDOM from "react-dom";
-import { User } from "../types";
-
-interface DeleteUserModalProps {
-  user: User;
-  onClose: () => void;
-  onDelete: () => void;
-}
+import { DeleteUserModalProps } from "../types";
 
 const DeleteUserModal = ({ user, onClose, onDelete }: DeleteUserModalProps) => {
   const modalContent = (

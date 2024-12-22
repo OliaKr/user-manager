@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { User } from "../types";
-
-interface AddNewUserModalProps {
-  onClose: () => void;
-  onSave: (newUser: User) => void;
-}
+import { AddNewUserModalProps } from "../types";
 
 const AddNewUserModal = ({ onClose, onSave }: AddNewUserModalProps) => {
   const [formData, setFormData] = useState({

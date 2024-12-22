@@ -1,9 +1,5 @@
 import React from "react";
-import { User } from "../types";
-
-interface ExportButtonsProps {
-  users: User[];
-}
+import { ExportButtonsProps } from "../types";
 
 const ExportButtons = ({ users }: ExportButtonsProps) => {
   const handleExportAsJSON = () => {
