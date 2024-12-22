@@ -18,7 +18,7 @@ const UserList = ({
 }: UsersListProps) => {
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-40">
+      <div className="flex justify-center items-center h-40 ">
         <p>Loading...</p>
       </div>
     );
@@ -41,7 +41,10 @@ const UserList = ({
   }
 
   return (
-    <div className="blurtext bg-[white] relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+    <div
+      className="blurtext mt-[40px] bg-[white]/40 relative z-10 grid 
+    grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 backdrop-blur-[20px]"
+    >
       {users.map((user) => (
         <UserCard
           key={user.id}

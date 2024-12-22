@@ -14,10 +14,10 @@ const UserCard = (props: UserCardProps) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   return (
-    <div>
+    <div className="transition-transform transform hover:scale-105 hover:shadow-2xl duration-300 ease-out hover:bg-purple-100">
       <div
         key={user.id}
-        className="border rounded-lg shadow-lg p-6 flex flex-col items-center bg-white h-full"
+        className="border rounded-lg shadow-lg p-6 flex flex-col items-center bg-[#ffffff99] h-full"
       >
         <img
           src={user.image}
@@ -25,8 +25,8 @@ const UserCard = (props: UserCardProps) => {
           className="rounded-full w-24 h-24 mb-4"
         />
         <div className="text-center mb-4 flex-grow">
-          <h3 className="text-lg font-bold mb-2">{user.name}</h3>
-          <p className="text-sm text-gray-600">{user.email}</p>
+          <h3 className="text-lg font-bold mb-2 ">{user.name}</h3>
+          <p className="text-sm text-[#ee28c7] font-bold">{user.email}</p>
           <p className="text-sm text-gray-600">{user.location}</p>
         </div>
         <div className="flex gap-4 mt-4">

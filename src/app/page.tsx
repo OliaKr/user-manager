@@ -66,7 +66,7 @@ export default function Home() {
     <div className="container mx-auto px-4 ">
       <div
         className="circlePosition w-[300px] sm:w-[590px] h-[200px] sm:h-[400px] bg-[#ec5ff9] rounded-[100%] absolute 
-        z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] blur-[100px] sm:blur-[150px]"
+        z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] blur-[150px] "
       ></div>
       <div className="center m-auto w-[90%] sm:w-[70%]">
         <div className="centerText">
@@ -78,7 +78,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 ">
+      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 mt-[40px] ">
         <div className="w-full justify-center sm:w-1/4">
           <SearchUsers setSearchTerm={setSearchTerm} />
         </div>
