@@ -1,4 +1,5 @@
 "use client";
+import ReactDOM from "react-dom";
 import { User } from "../types";
 
 interface DeleteUserModalProps {
@@ -8,14 +9,13 @@ interface DeleteUserModalProps {
 }
 
 const DeleteUserModal = ({ user, onClose, onDelete }: DeleteUserModalProps) => {
-  return (
+  const modalContent = (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 mx-4 sm:mx-6">
         <h2 className="text-xl font-bold mb-4 text-center">Are you sure?</h2>
         <p className="text-gray-700 text-center mb-6">
-          This action irreversible. This will permanently delete{" "}
-          <strong>{user.name}</strong>'s account and erase their data from the
-          system.
+          This action is irreversible. This will permanently delete{" "}
+          <strong>{user.name}</strong>'s account and erase their data.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -34,6 +34,8 @@ const DeleteUserModal = ({ user, onClose, onDelete }: DeleteUserModalProps) => {
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 };
 
 export default DeleteUserModal;

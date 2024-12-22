@@ -79,7 +79,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 mt-[2.5rem] ">
+      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 mt-[0.9375rem] sm:mt-[2.5rem] ">
         <div className="w-full justify-center sm:w-1/4">
           <SearchUsers setSearchTerm={setSearchTerm} />
         </div>
