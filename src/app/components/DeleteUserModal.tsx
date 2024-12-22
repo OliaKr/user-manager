@@ -8,8 +8,8 @@ const DeleteUserModal = ({ user, onClose, onDelete }: DeleteUserModalProps) => {
       <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 mx-4 sm:mx-6">
         <h2 className="text-xl font-bold mb-4 text-center">Are you sure?</h2>
         <p className="text-gray-700 text-center mb-6">
-          This action is irreversible. This will permanently delete{" "}
-          <strong>{user.name}</strong>'s account and erase their data.
+          This action is irreversible. It will permanently delete{" "}
+          <strong>{user.name}</strong>&apos;s account.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button

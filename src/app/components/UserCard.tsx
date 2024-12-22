@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserCardProps } from "../types";
 import EditUserModal from "./EditUserModal";
 import DeleteUserModal from "./DeleteUserModal";
+import Image from "next/image";
 
 const UserCard = (props: UserCardProps) => {
   const { user, onSave, onDelete } = props;
@@ -14,9 +15,9 @@ const UserCard = (props: UserCardProps) => {
         key={user.id}
         className="border rounded-lg shadow-lg p-6 flex flex-col items-center bg-[#ffffff99] h-full"
       >
-        <img
-          src={user.image}
-          alt={user.name}
+        <Image
+          src={user.image || "/default-image.png"}
+          alt={user.name || "User image"}
           className="rounded-full w-24 h-24 mb-4"
         />
         <div className="text-center mb-4 flex-grow">
