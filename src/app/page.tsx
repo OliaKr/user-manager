@@ -6,6 +6,7 @@ import { User } from "./types";
 import { ApiResponse } from "./types";
 import UserList from "./components/UserList";
 import AddNewUserModal from "./components/AddNewUserModal";
+import ExportButtons from "./components/ExportButtons";
 
 const fetchUsers = async (): Promise<User[]> => {
   const response = await fetch("https://randomuser.me/api/?results=10");
@@ -65,30 +66,33 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 ">
       <div
-        className="circlePosition w-[300px] sm:w-[590px] h-[200px] sm:h-[400px] bg-[#ec5ff9] rounded-[100%] absolute 
+        className="circlePosition w-[18.75rem] sm:w-[36.875rem] h-[12.5rem] sm:h-[25rem] bg-[#ec5ff9] rounded-[100%] absolute 
         z-[-1] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] blur-[150px] "
       ></div>
       <div className="center m-auto w-[90%] sm:w-[70%]">
         <div className="centerText">
-          <h2 className="text-[36px] sm:text-[50px] font-bold text-[#f323db] text-center mt-8 sm:mt-[30px] mb-4 sm:mb-[0.35rem]">
+          <h2 className="text-[2.25rem] sm:text-[3.125rem] font-bold text-[#f323db] text-center mt-8 sm:mt-[1.875rem] mb-4 sm:mb-[0.35rem]">
             User Manager Pro
           </h2>
-          <p className="info text-center text-[16px] text-[#706f6f]">
+          <p className="info text-center text-[1rem] text-[#706f6f]">
             Easily Manage and Customize Users.
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 mt-[40px] ">
+      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-between mb-6 mt-[2.5rem] ">
         <div className="w-full justify-center sm:w-1/4">
           <SearchUsers setSearchTerm={setSearchTerm} />
         </div>
-        <button
-          type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          onClick={() => setIsAddModalOpen(true)}
-        >
-          Add User
-        </button>
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-4 sm:justify-end">
+          <button
+            type="button"
+            className="w-auto px-3 py-1 text-xs font-medium text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition sm:text-sm sm:px-4 sm:py-2"
+            onClick={() => setIsAddModalOpen(true)}
+          >
+            Add User
+          </button>
+          <ExportButtons users={users} />
+        </div>
       </div>
       <UserList
         isError={isError}

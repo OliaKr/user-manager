@@ -43,7 +43,7 @@ const UserList = ({
   return (
     <div
       className="blurtext mt-[40px] bg-[white]/40 relative z-10 grid 
-    grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 backdrop-blur-[20px]"
+    grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 backdrop-blur-[1.25rem]"
     >
       {users.map((user) => (
         <UserCard
